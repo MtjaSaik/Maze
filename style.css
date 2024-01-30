@@ -1,0 +1,55 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+.main{
+    height: 100%;
+    width: 100%;
+}
+
+.holder{
+    height: 100%;
+    width: 1000px;
+    margin: 3% auto;    
+}
+
+.title{
+    height: 200px;
+    width: inherit;
+    background-color: rgb(196, 196, 196, 0.3);
+}
+
+.menu{
+    height: 100px;
+    width: inherit;
+    background-color: rgb(184, 228, 255, 0.3);
+}
+button{
+    height: 50px;
+    width: 150px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 2.5% 42.5%;
+    background-color: rgb(235, 235, 235);
+    color: rgb(255, 96, 96);
+    font-size: 26px;
+    font-family: 'Courier New', Courier, monospace;
+}
+button:hover{
+    background-color: rgb(225, 225, 225);
+}
+
+.container{
+    position: fixed;
+    height: 600px;
+    width: inherit;
+    background-color: rgb(255, 212, 212, 0.3);
+}
+#canvas{
+    display: block;
+    margin: 2.5% auto;
+}
