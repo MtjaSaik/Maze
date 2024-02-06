@@ -1,8 +1,5 @@
-var canvas = document.getElementById('myCanvas');
-var ctx = canvas.getContext('2d');
-
 function drawMaze(){
-	var cord=[
+   var cord=[
         [2,2,226,2],[242,2,482,2],[18,18,34,18],[66,18,82,18],[114,18,130,18],[146,18,162,18],[178,18,210,18],
         [226,18,290,18],[306,18,322,18],[386,18,434,18],[466,18,482,18],[2,34,34,34],[82,34,130,34],[162,34,194,34],
         [210,34,242,34],[322,34,402,34],[434,34,466,34],[50,50,66,50],[114,50,130,50],[146,50,162,50],[242,50,274,50],
@@ -60,7 +57,7 @@ function drawMaze(){
         [450,50,450,98],[450,114,450,130],[450,146,450,194],[450,274,450,338],[450,450,450,466],[466,98,466,210],[466,258,466,274],[466,306,466,338],[466,466,466,482],
         [482,2,482,482],
 	];
-  const canvas = document.getElementById("canvas");
+   const canvas = document.getElementById("canvas");
    const ctx = canvas.getContext("2d");
    console.log("maze "+cord.length);
    ctx.beginPath();
@@ -74,6 +71,8 @@ function drawMaze(){
     ctx.stroke();
     console.log("maze3 "+cord.length);
 }
+
+
   path = [
     [234,2],[234,10],[298,10],[298,58],[314,58],[314,74],[346,74],[346,90],[298,90],[298,106],
     [314,106],[314,122],[362,122],[362,74],[378,74],[378,106],[394,106],[394,138],[410,138],
@@ -86,7 +85,9 @@ function drawMaze(){
     [90,410],[58,410],[58,426],[74,426],[74,458],[90,458],[90,474],[106,474],[106,458],[122,458],
     [122,474],[234,474],[234,426],[250,426],[250,410],[266,410],[266,442],[250,442],[250,458],[266,458],[266,474],[250,474],[250,482]
 ];
-function drawPath(){
+
+
+/*function drawPath(){
 
 const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext("2d");
@@ -98,17 +99,19 @@ const canvas = document.getElementById("canvas");
     ctx.strokeStyle ="red";
     ctx.stroke();
   }
-  setInterval(drawPath, 1000);
 }
+*/
 
 function drawSolution() {
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
   const drawLinesWithDelay = (ctx, path, delay) => {
       ctx.beginPath();
-      ctx.strokeStyle = "blue";
-      ctx.lineWidth = 10;
+      ctx.strokeStyle = "red";
+      ctx.lineWidth = 5;
 
       const drawLineSegment = (i) => {
-          const point = pointsArray[i];
+          const point = path[i];
           const x = point[0];
           const y = point[1];
 
@@ -131,7 +134,12 @@ function drawSolution() {
 
       drawLineSegment(0);
   };
-  const delayBetweenLines = 200;
-  drawLinesWithDelay(ctx, pointsArray, delayBetweenLines);
+  const delayBetweenLines = 100;
+  drawLinesWithDelay(ctx, path, delayBetweenLines);
 }
 drawSolution();
+
+function disable(){
+	const button = document.getElementById("solve");
+	button.disabled = true;
+}

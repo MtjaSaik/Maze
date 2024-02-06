@@ -28,8 +28,18 @@ html, body{
     width: inherit;
     background-color: rgb(184, 228, 255, 0.3);
 }
+
+.buttons{
+	height: inherit;
+	width: 200px;
+	padding-top: 20px;
+	margin: auto;
+	display: flex;
+	justify-content: space-around;
+}
+
 button{
-    height: 50px;
+    height: 45px;
     width: 150px;
     border-radius: 5px;
     text-align: center;
@@ -41,6 +51,9 @@ button{
 }
 button:hover{
     background-color: rgb(225, 225, 225);
+}
+button:active{
+	background-color: rgb(150, 150, 150);
 }
 
 .container{
