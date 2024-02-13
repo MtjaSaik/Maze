@@ -1,32 +1,29 @@
 <html>
     <head>
-        <title></title>
+        <title>Elemental</title>
         <link rel="stylesheet" href="style.css">
-        <script src="script.js"></script>
     </head>
     <body>
         <div class="main">
             <div class="holder">
-                <div class="title"></div>
+                <div class="title"><a>ELEMENTAL</a></div>
                 <div class="menu">
 					<div class="buttons">
-						<button id="solve" onclick="drawSolution();disable()">solve</button>
-						<button onClick="window.location.reload();">reset</button>
+						<button id="sol" class="button" onclick="drawSolution();" style="--color:#1e9bff;">solve</button>
+						<button id="play" onclick="moveCh();" style="--color: #4ad81b;">play</button>
+						<button onClick="window.location.reload();" style="--color: #ec0d5b;">reset</button>
 					</div>
                 </div>
                 <div class="container">
                     <div class="maze">
-                        <canvas id="canvas" width="546" height="546">
-                            <script>
-                                var canvas = document.getElementById('canvas');
-                                var context = canvas.getContext('2d');
-                                context.scale(0.75, 0.75);
-                                drawMaze();
-                            </script>
-                        </canvas>
+                        <div class="ho">
+                            <canvas id="canvas" width="484" height="484"></canvas>
+                            <canvas id="canvas2" width="484" height="484"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </body>
+    <script src="script.js"></script>
 </html>
