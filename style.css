@@ -32,6 +32,7 @@ html, body{
     font-size: 100px;
     font-weight: bold;
     background: linear-gradient(to right, #ef5350, #f48fb1, #2196f3, #26c6da);
+    background-clip: unset;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -104,6 +105,7 @@ button {
     height: 600px;
     width: inherit;
 }
+
 .ho{
     position: relative;
     margin:auto auto 0 auto;
@@ -117,6 +119,10 @@ button {
 #canvas2 {
     position: absolute;
     top: 0;
+}
+
+.rules{
+    font-size: 10px !important;
 }
 
 @font-face{

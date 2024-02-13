@@ -168,6 +168,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 
 
+function rules(){
+  Swal.fire({
+    title: "How to play?",
+    color: "#ec0d5b",
+    text: "Find the exit as fast as possible, use the arrowkeys or wasd to move.",
+  });
+}
 
 
 
