@@ -199,7 +199,6 @@ document.addEventListener("keydown", (e) => {
 
   if (me) return;
   const key = e.key;
-  //IZPIS LOKACIJE CH
   j = (x - 4) / m * 2 + 1;
   k = (y - 2) / m * 2 + 1;
   //console.log((x-4)/m*2+1+"  "+(y-2)/m*2+1);
@@ -281,11 +280,6 @@ get_px = (ctx, x, y) => {
   return ctx.getImageData(x, y, 1, 1).data;
 };
 
-
-
-
-
-
 var w = 30;
 var h = 30;
 arr = new Array(w * 2 + 1);
@@ -309,7 +303,6 @@ for (var i = 0; i < w * 2 + 1; i++) {
     }
   }
 }
-//ARRAY OF MAZE MADE OUT OF 1 AND 0, 90deg to left cuz of js
 //console.log(arr);
 
 
@@ -326,10 +319,10 @@ function drawLaser() {
   laser.height = 484 * scale;
   ctx3.scale(scale, scale);
 
-  var laserWidth = 50; // Width of the laser line
+  var laserWidth = 50;
 
 
-  var xl = -50; // Initial xl position of the laser
+  var xl = -50;
   sy = Math.round(Math.random()*(28-0)+0);
   sy2 = Math.round(Math.random()*(28-0)+0);
   sy3 = Math.round(Math.random()*(28-0)+0);
@@ -346,33 +339,33 @@ function drawLaser() {
   yl = spawn[sy];
 
 
-  var xl2 = -50; // Initial xl position of the laser
+  var xl2 = -50;
         if(sy2 == sy|| sy2 == sy3){
           sy2 = Math.round(Math.random()*(28-0)+0);
         }
       yl2 = spawn[sy2];
 
 
-  var xl3 = -50; // Initial xl position of the laser
+  var xl3 = -50;
         if(sy3 == sy|| sy3 == sy2){
           sy3 = Math.round(Math.random()*(28-0)+0);
         }
       yl3 = spawn[sy3];
 
 
-      var yl4 = -50; // Initial xl position of the laser
+      var yl4 = -50;
         if(sx4 == sx5|| sx4 == sx6 || sx4 == 13){
           sx4 = Math.round(Math.random()*(28-0)+0);
         }
       xl4 = spawn[sx4];
 
-      var yl5 = -50; // Initial xl position of the laser
+      var yl5 = -50;
         if(sx5 == sx4|| sx5 == sx6 || sx5 == 13){
           sx5 = Math.round(Math.random()*(28-0)+0);
         }
       xl5 = spawn[sx5];
 
-      var yl6 = -50; // Initial xl position of the laser
+      var yl6 = -50;
         if(sx6 == sx4|| sx6 == sx5 || sx6 == 13){
           sx6 = Math.round(Math.random()*(28-0)+0);
         }
@@ -432,15 +425,14 @@ function drawLaser() {
     ctx3.closePath();
 
     // Move the laser
-    xl += 0.75; // Adjust the speed as needed
-    xl2 += 1; // Adjust the speed as needed
-    xl3 += 1.2; // Adjust the speed as needed
+    xl += 0.75;
+    xl2 += 1;
+    xl3 += 1.2;
 
-    yl4 += 0.3; // Adjust the speed as needed
-    yl5 += 0.45; // Adjust the speed as needed
-    yl6 += 1.5; // Adjust the speed as needed
+    yl4 += 0.3;
+    yl5 += 0.45;
+    yl6 += 1.5;
 
-    // If the laser reaches the end of the laser, reset its position
     if (xl > 484) {
       xl = -50;
       sy = Math.round(Math.random()*(28-0)+0);
@@ -450,7 +442,7 @@ function drawLaser() {
         }
         t=false;
       }
-      yl = spawn[sy]; // Randomize the vertical position again
+      yl = spawn[sy];
     }
 
     if (xl2 > 484) {
@@ -462,7 +454,7 @@ function drawLaser() {
         }
         t2=false;
       }
-      yl2 = spawn[sy2]; // Randomize the vertical position again
+      yl2 = spawn[sy2];
     }
 
     if (xl3 > 484) {
@@ -474,7 +466,7 @@ function drawLaser() {
         }
         t3=false;
       }
-      yl3 = spawn[sy3]; // Randomize the vertical position again
+      yl3 = spawn[sy3];
     }
 
     if (yl4 > 484) {
@@ -486,7 +478,7 @@ function drawLaser() {
         }
         t4=false;
       }
-      xl4 = spawn[sx4]; // Randomize the vertical position again
+      xl4 = spawn[sx4];
     }
 
     if (yl5 > 484) {
@@ -498,7 +490,7 @@ function drawLaser() {
         }
         t5=false;
       }
-      xl5 = spawn[sx5]; // Randomize the vertical position again
+      xl5 = spawn[sx5];
     }
 
     if (yl6 > 484) {
@@ -510,15 +502,12 @@ function drawLaser() {
         }
         t6=false;
       }
-      xl6 = spawn[sx6]; // Randomize the vertical position again
+      xl6 = spawn[sx6];
     }
-
-    // Repeat the drawing
     requestAnimationFrame(draw);
   }
-
-  // Start the animation
   draw();
+  //endMenu();
 }
 
 
@@ -526,12 +515,10 @@ function endMenu(){
   sound.volume=0.05;
   Swal.fire({
     title: 'GOOD GAME',
-    confirmButtonColor: "#1e9bff",
+    color: "#ec0d5b",
+    background: "rgba(0, 0, 0, 0.70)",
+    confirmButtonColor: "#0078D3",
     html: "You successfully avoided all the lasers and found the exit!",
     confirmButtonText: 'DONE',
-    customClass: {
-      popup: 'sweet end', 
-      confirmButton: 'butt2'
-    }
   });
 }
