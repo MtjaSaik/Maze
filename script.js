@@ -507,7 +507,7 @@ function drawLaser() {
     requestAnimationFrame(draw);
   }
   draw();
-  //endMenu();
+  endMenu();
 }
 
 
@@ -516,9 +516,14 @@ function endMenu(){
   Swal.fire({
     title: 'GOOD GAME',
     color: "#ec0d5b",
+    focusConfirm: false,
+    returnFocus: false,
     background: "rgba(0, 0, 0, 0.70)",
     confirmButtonColor: "#0078D3",
     html: "You successfully avoided all the lasers and found the exit!",
     confirmButtonText: 'DONE',
+    customClass: {
+      confirmButton: 'confirm',
+    },
   });
 }
