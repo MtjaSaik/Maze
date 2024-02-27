@@ -1,17 +1,17 @@
 <html>
     <head>
-        <title>Elemental</title>
+        <title>Lasers</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/x-icon" href="pictures/favicon.ico">
     </head>
     <body>
         <div class="main">
             <div class="holder">
-                <div class="title"><a>ELEMENTAL</a></div>
+                <div class="title"><a>LASERS</a></div>
                 <div class="menu">
 					<div class="buttons">
 						<button id="sol" class="button" onclick="drawSolution();" style="--color:#1e9bff;">solve</button>
-						<button id="play" onclick="moveCh();" style="--color: #4ad81b;">play</button>
-                        <button id="rules" onclick="rules();" style="--color: #ffffff6e;">rules</button> 
+						<button id="play" onclick="moveCh();drawLaser();" style="--color: #4ad81b;">play</button>
 						<button onClick="window.location.reload();" style="--color: #ec0d5b;">reset</button>
 					</div>
                 </div>
@@ -20,6 +20,7 @@
                         <div class="ho">
                             <canvas id="canvas" width="484" height="484"></canvas>
                             <canvas id="canvas2" width="484" height="484"></canvas>
+                            <canvas id="canvas3" width="484" height="484"></canvas>
                         </div>
                     </div>
                 </div>

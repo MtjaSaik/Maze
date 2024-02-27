@@ -68,10 +68,23 @@ path = [
   [90, 410], [58, 410], [58, 426], [74, 426], [74, 458], [90, 458], [90, 474], [106, 474], [106, 458], [122, 458],
   [122, 474], [234, 474], [234, 426], [250, 426], [250, 410], [266, 410], [266, 442], [250, 442], [250, 458], [266, 458], [266, 474], [250, 474], [250, 482]
 ];
+var spawn = [
+  [26],[42],[58],[74],[90],[106],[122],[138],[154],[170],[186],[202],[218],[234],[250],[266],[282],[298],[314],[330],[346],[362],[378],[394],[410],[426],[442],[458],[474]
+];
+
+sound = new Audio('music/hero.mp3');
+sound.volume=0.025;
+document.addEventListener("click", (event) => {
+  sound.play();
+});
+
+
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const character = document.getElementById("canvas2");
 const ctx2 = character.getContext("2d");
+const laser = document.getElementById("canvas3");
+const ctx3 = laser.getContext("2d");
 
 function drawMaze() {
   scale = 1.20;
@@ -97,11 +110,12 @@ function drawSolution() {
   document.getElementById("play").setAttribute("disabled", true);
   document.getElementById("sol").setAttribute("disabled", true);
   character.style.display = "none";
+  laser.style.display = "none";
 
   const drawLinesWithDelay = (ctx, path, delay, style) => {
 
     ctx.beginPath();
-    ctx.strokeStyle = "rgb(102 21 194)";
+    ctx.strokeStyle = "#ff01eb";
 
     ctx.lineWidth = 4;
 
@@ -146,16 +160,14 @@ function removeSolution() {
 
 
 
-
-
-chW = 12;
-chH = 15;
+chW = 16;
+chH = 14;
 function drawCh() {
   character.width = 484 * scale;
   character.height = 484 * scale;
   ctx2.scale(scale, scale);
 
-  url = "pictures/ch.jpg";
+  url = "pictures/baloon.png";
   img = document.createElement("img");
   img.setAttribute('src', url);
   img.onload = function () {
@@ -167,23 +179,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 
-
-function rules(){
-  Swal.fire({
-    title: "How to play?",
-    color: "#ec0d5b",
-    text: "Find the exit as fast as possible, use the arrowkeys or wasd to move.",
-  });
-}
-
-
-
 me = true;
 function moveCh() {
   me = false;
   removeSolution();
   ctx2.clearRect(0, 0, canvas.width, canvas.height);
   character.style.display = "block";
+
   y = 2;
   x = 228;
   m = 16;
@@ -211,7 +213,7 @@ document.addEventListener("keydown", (e) => {
           ctx2.clearRect(0, 0, canvas.width, canvas.height);
           y = y - m;
           ctx2.drawImage(img, x, y, chW, chH);
-          //console.log(x+" "+y);
+          console.log(x+" "+y);
         }
       }
       break;
@@ -242,6 +244,16 @@ document.addEventListener("keydown", (e) => {
           ctx2.drawImage(img, x, y, chW, 16);
           //console.log(x+" "+y);
         }
+        if(x==260 && y==466 || x==244 && y==466){
+          endMenu();
+          ctx2.clearRect(0,0, canvas.width, canvas.height);
+          drawCh();
+          y=2;
+          x=228;
+          me=true;
+          document.getElementById("play").removeAttribute("disabled");
+          //console.log("end");
+        }
       }
       break;
 
@@ -256,6 +268,7 @@ document.addEventListener("keydown", (e) => {
           ctx2.drawImage(img, x, y, chW, chH);
           //console.log(x+" "+y);
         }
+
       }
       break;
 
@@ -298,3 +311,227 @@ for (var i = 0; i < w * 2 + 1; i++) {
 }
 //ARRAY OF MAZE MADE OUT OF 1 AND 0, 90deg to left cuz of js
 //console.log(arr);
+
+
+
+function drawLaser() {
+  var t=true;
+  var t2=true;
+  var t3=true;
+  var t4=true;
+  var t5=true;
+  var t6=true;
+  scale = 1.20;
+  laser.width = 484 * scale;
+  laser.height = 484 * scale;
+  ctx3.scale(scale, scale);
+
+  var laserWidth = 50; // Width of the laser line
+
+
+  var xl = -50; // Initial xl position of the laser
+  sy = Math.round(Math.random()*(28-0)+0);
+  sy2 = Math.round(Math.random()*(28-0)+0);
+  sy3 = Math.round(Math.random()*(28-0)+0);
+
+  sx4 = Math.round(Math.random()*(28-0)+0);
+  sx5 = Math.round(Math.random()*(28-0)+0);
+  sx6 = Math.round(Math.random()*(28-0)+0);
+
+
+
+    if(sy == sy2|| sy == sy3){
+      sy = Math.round(Math.random()*(28-0)+0);
+    }
+  yl = spawn[sy];
+
+
+  var xl2 = -50; // Initial xl position of the laser
+        if(sy2 == sy|| sy2 == sy3){
+          sy2 = Math.round(Math.random()*(28-0)+0);
+        }
+      yl2 = spawn[sy2];
+
+
+  var xl3 = -50; // Initial xl position of the laser
+        if(sy3 == sy|| sy3 == sy2){
+          sy3 = Math.round(Math.random()*(28-0)+0);
+        }
+      yl3 = spawn[sy3];
+
+
+      var yl4 = -50; // Initial xl position of the laser
+        if(sx4 == sx5|| sx4 == sx6 || sx4 == 13){
+          sx4 = Math.round(Math.random()*(28-0)+0);
+        }
+      xl4 = spawn[sx4];
+
+      var yl5 = -50; // Initial xl position of the laser
+        if(sx5 == sx4|| sx5 == sx6 || sx5 == 13){
+          sx5 = Math.round(Math.random()*(28-0)+0);
+        }
+      xl5 = spawn[sx5];
+
+      var yl6 = -50; // Initial xl position of the laser
+        if(sx6 == sx4|| sx6 == sx5 || sx6 == 13){
+          sx6 = Math.round(Math.random()*(28-0)+0);
+        }
+      xl6 = spawn[sx6];
+
+
+  function draw() {
+    ctx3.clearRect(0, 0, 484, 484);
+
+    
+    ctx3.beginPath();
+    ctx3.moveTo(xl, yl);
+    ctx3.lineTo(xl + laserWidth, yl);
+    ctx3.strokeStyle = 'red';
+    ctx3.lineWidth = 6;
+    ctx3.stroke();
+    ctx3.closePath();
+
+    ctx3.beginPath();
+    ctx3.moveTo(xl2, yl2);
+    ctx3.lineTo(xl2 + laserWidth, yl2);
+    ctx3.strokeStyle = 'red';
+    ctx3.lineWidth = 6;
+    ctx3.stroke();
+    ctx3.closePath();
+
+    ctx3.beginPath();
+    ctx3.moveTo(xl3, yl3);
+    ctx3.lineTo(xl3 + laserWidth, yl3);
+    ctx3.strokeStyle = 'red';
+    ctx3.lineWidth = 6;
+    ctx3.stroke();
+    ctx3.closePath();
+
+    ctx3.beginPath();
+    ctx3.moveTo(xl4, yl4);
+    ctx3.lineTo(xl4, yl4 + laserWidth);
+    ctx3.strokeStyle = 'red';
+    ctx3.lineWidth = 6;
+    ctx3.stroke();
+    ctx3.closePath();
+
+    ctx3.beginPath();
+    ctx3.moveTo(xl5, yl5);
+    ctx3.lineTo(xl5, yl5 + laserWidth);
+    ctx3.strokeStyle = 'red';
+    ctx3.lineWidth = 6;
+    ctx3.stroke();
+    ctx3.closePath();
+
+    ctx3.beginPath();
+    ctx3.moveTo(xl6, yl6);
+    ctx3.lineTo(xl6, yl6 + laserWidth);
+    ctx3.strokeStyle = 'red';
+    ctx3.lineWidth = 6;
+    ctx3.stroke();
+    ctx3.closePath();
+
+    // Move the laser
+    xl += 0.75; // Adjust the speed as needed
+    xl2 += 1; // Adjust the speed as needed
+    xl3 += 1.2; // Adjust the speed as needed
+
+    yl4 += 0.3; // Adjust the speed as needed
+    yl5 += 0.45; // Adjust the speed as needed
+    yl6 += 1.5; // Adjust the speed as needed
+
+    // If the laser reaches the end of the laser, reset its position
+    if (xl > 484) {
+      xl = -50;
+      sy = Math.round(Math.random()*(28-0)+0);
+      while(t){
+        if(sy == sy2|| sy == sy3){
+          sy = Math.round(Math.random()*(28-0)+0);
+        }
+        t=false;
+      }
+      yl = spawn[sy]; // Randomize the vertical position again
+    }
+
+    if (xl2 > 484) {
+      xl2 = -50;
+      sy2 = Math.round(Math.random()*(28-0)+0);
+      while(t2){
+        if(sy2 == sy|| sy2 == sy3){
+          sy2 = Math.round(Math.random()*(28-0)+0);
+        }
+        t2=false;
+      }
+      yl2 = spawn[sy2]; // Randomize the vertical position again
+    }
+
+    if (xl3 > 484) {
+      xl3 = -50;
+      sy3 = Math.round(Math.random()*(28-0)+0);
+      while(t3){
+        if(sy3 == sy2 || sy3 == sy){
+          sy3 = Math.round(Math.random()*(28-0)+0);
+        }
+        t3=false;
+      }
+      yl3 = spawn[sy3]; // Randomize the vertical position again
+    }
+
+    if (yl4 > 484) {
+      yl4 = -50;
+      sx4 = Math.round(Math.random()*(28-0)+0);
+      while(t4){
+        if(sx4 == sx5 || sx4 == sx6 || sx4 == 13){
+          sx4 = Math.round(Math.random()*(28-0)+0);
+        }
+        t4=false;
+      }
+      xl4 = spawn[sx4]; // Randomize the vertical position again
+    }
+
+    if (yl5 > 484) {
+      yl5 = -50;
+      sx5 = Math.round(Math.random()*(28-0)+0);
+      while(t5){
+        if(sx5 == sx4 || sx5 == sx6 || sx5 == 13){
+          sx5 = Math.round(Math.random()*(28-0)+0);
+        }
+        t5=false;
+      }
+      xl5 = spawn[sx5]; // Randomize the vertical position again
+    }
+
+    if (yl6 > 484) {
+      yl6 = -50;
+      sx6 = Math.round(Math.random()*(28-0)+0);
+      while(t6){
+        if(sx6 == sx4 || sx6 == sx5 || sx6 == 13){
+          sx6 = Math.round(Math.random()*(28-0)+0);
+        }
+        t6=false;
+      }
+      xl6 = spawn[sx6]; // Randomize the vertical position again
+    }
+
+    // Repeat the drawing
+    requestAnimationFrame(draw);
+  }
+
+  // Start the animation
+  draw();
+}
+
+
+function endMenu(){
+  sound.volume=0.05;
+  Swal.fire({
+    title: 'GOOD GAME',
+    confirmButtonColor: "#1e9bff",
+    html: "You successfully avoided all the lasers and found the exit!",
+    confirmButtonText: 'DONE',
+    customClass: {
+      popup: 'sweet end', 
+      confirmButton: 'butt2'
+    }
+  });
+}

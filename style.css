@@ -4,7 +4,7 @@ html, body{
     margin: 0px;
     padding: 0px;
     overflow: hidden;
-    background-image: url(pictures/background.jpg);
+    background-image: url(pictures/bcg.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
 }
@@ -117,6 +117,10 @@ button {
     display: block;
 }
 #canvas2 {
+    position: absolute;
+    top: 0;
+}
+#canvas3 {
     position: absolute;
     top: 0;
 }
