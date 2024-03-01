@@ -306,7 +306,7 @@ for (var i = 0; i < w * 2 + 1; i++) {
 //console.log(arr);
 
 
-
+var start = false;
 function drawLaser() {
   var t=true;
   var t2=true;
@@ -337,6 +337,7 @@ function drawLaser() {
       sy = Math.round(Math.random()*(28-0)+0);
     }
   yl = spawn[sy];
+  start = true;
 
 
   var xl2 = -50;
@@ -506,10 +507,23 @@ function drawLaser() {
     }
     requestAnimationFrame(draw);
   }
+  //detectHit();
   draw();
-  endMenu();
+  //endMenu();
 }
 
+/*var hit = false;
+if(start){
+  function detectHit(){
+    if(x >= x1 && x <= x1 + 50 && y >= laserWidth && y <= y1 + 20){
+        hit = true;
+    }else{
+        hit = false;
+    }
+    console.log(hit);
+  }
+}
+*/
 
 function endMenu(){
   sound.volume=0.05;
