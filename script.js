@@ -212,7 +212,7 @@ document.addEventListener("keydown", (e) => {
           ctx2.clearRect(0, 0, canvas.width, canvas.height);
           y = y - m;
           ctx2.drawImage(img, x, y, chW, chH);
-          console.log(x+" "+y);
+          //console.log(x+" "+y);
         }
       }
       break;
@@ -375,7 +375,7 @@ function drawLaser() {
 
   function draw() {
     ctx3.clearRect(0, 0, 484, 484);
-
+    detectHit();
     
     ctx3.beginPath();
     ctx3.moveTo(xl, yl);
@@ -507,23 +507,24 @@ function drawLaser() {
     }
     requestAnimationFrame(draw);
   }
-  //detectHit();
   draw();
-  //endMenu();
-}
-
-/*var hit = false;
-if(start){
   function detectHit(){
-    if(x >= x1 && x <= x1 + 50 && y >= laserWidth && y <= y1 + 20){
+    //console.log(x+" "+y);
+    //console.log(xl+" "+yl +" "+ sy+ " "+ ((spawn[sy])-(8)));
+    //console.log(xl4 +" "+ yl4 + " " + spawn[sx4] + " "+ ((spawn[sx4])-(6)));
+    if(x >= xl && x <= xl + laserWidth && y == ((spawn[sy])-(8)) || x >= xl2 && x <= xl2 + laserWidth && y == ((spawn[sy2])-(8)) || x >= xl3 && x <= xl3 + laserWidth && y == ((spawn[sy3])-(8)) || y >= yl4 && y <= yl4 + laserWidth && x == ((spawn[sx4])-(6)) || y >= yl5 && y <= yl5 + laserWidth && x == ((spawn[sx5])-(6)) || y >= yl6 && y <= yl6 + laserWidth && x == ((spawn[sx6])-(6))){
         hit = true;
+        loseMenu();
     }else{
         hit = false;
     }
     console.log(hit);
   }
+  //endMenu();
+  //loseMenu();
 }
-*/
+
+var hit = false;
 
 function endMenu(){
   sound.volume=0.05;
@@ -539,5 +540,34 @@ function endMenu(){
     customClass: {
       confirmButton: 'confirm',
     },
+  }).then(function(isConfirm) {
+    if (isConfirm) {
+      location.reload();
+    } else {
+      //if no clicked => do something else
+    }
   });
 }
+
+  function loseMenu(){
+    sound.volume=0.05;
+    Swal.fire({
+      title: 'GOOD GAME',
+      color: "#ec0d5b",
+      focusConfirm: false,
+      returnFocus: false,
+      background: "rgba(0, 0, 0, 0.70)",
+      confirmButtonColor: "#0078D3",
+      html: "You have been hit!",
+      confirmButtonText: 'DONE',
+      customClass: {
+        confirmButton: 'confirm',
+      },
+    }).then(function(isConfirm) {
+      if (isConfirm) {
+        location.reload();
+      } else {
+        //if no clicked => do something else
+      }
+    });
+  }
