@@ -135,6 +135,21 @@ button {
 .confirm{
     width: 180px;
     height: 50px;
+    text-shadow: 0 0 15px #ff3179c9;
+}
+
+.swtext{
+    color: #ff3179c9;
+    font-size: 17.9px;
+    transition: 0.5s;
+    text-shadow: 1px 1px #ff16686e;
+}
+
+.swtitle{
+    color: #ff3179f3;
+    text-shadow: 0 0 15px #ff3179c9;
+    font-size: 52.2px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 @font-face{

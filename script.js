@@ -308,7 +308,6 @@ for (var i = 0; i < w * 2 + 1; i++) {
 //console.log(arr);
 
 
-var start = false;
 function drawLaser() {
   var t=true;
   var t2=true;
@@ -324,7 +323,7 @@ function drawLaser() {
   var laserWidth = 50;
 
 
-  var xl = -50;
+  
   sy = Math.round(Math.random()*(28-0)+0);
   sy2 = Math.round(Math.random()*(28-0)+0);
   sy3 = Math.round(Math.random()*(28-0)+0);
@@ -334,45 +333,53 @@ function drawLaser() {
   sx6 = Math.round(Math.random()*(28-0)+0);
 
 
-
-    if(sy == sy2|| sy == sy3){
+  var xl = -50;
+    if(sy == sy2 || sy == sy3){
       sy = Math.round(Math.random()*(28-0)+0);
     }
   yl = spawn[sy];
-  start = true;
 
 
   var xl2 = -50;
-        if(sy2 == sy|| sy2 == sy3){
+        if(sy2 == sy || sy2 == sy3){
           sy2 = Math.round(Math.random()*(28-0)+0);
         }
       yl2 = spawn[sy2];
 
 
   var xl3 = -50;
-        if(sy3 == sy|| sy3 == sy2){
+        if(sy3 == sy || sy3 == sy2){
           sy3 = Math.round(Math.random()*(28-0)+0);
         }
       yl3 = spawn[sy3];
 
 
       var yl4 = -50;
-        if(sx4 == sx5|| sx4 == sx6 || sx4 == 13){
+        if(sx4 == sx5 || sx4 == sx6 || sx4 == 13){
           sx4 = Math.round(Math.random()*(28-0)+0);
         }
       xl4 = spawn[sx4];
+      if(xl4 == 234){
+          xl4 = spawn[sx4];
+      }
 
       var yl5 = -50;
-        if(sx5 == sx4|| sx5 == sx6 || sx5 == 13){
+        if(sx5 == sx4 || sx5 == sx6 || sx5 == 13){
           sx5 = Math.round(Math.random()*(28-0)+0);
         }
       xl5 = spawn[sx5];
+      if(xl5 == 234){
+        xl5 = spawn[sx5];
+      }
 
       var yl6 = -50;
-        if(sx6 == sx4|| sx6 == sx5 || sx6 == 13){
+        if(sx6 == sx4 || sx6 == sx5 || sx6 == 13){
           sx6 = Math.round(Math.random()*(28-0)+0);
         }
       xl6 = spawn[sx6];
+      if(xl6 == 234){
+        xl6 = spawn[sx6];
+      }
 
 
   function draw(){
@@ -484,7 +491,9 @@ function drawLaser() {
         }
         t4=false;
       }
-      xl4 = spawn[sx4];
+      if(x !== 228 && xl4 !== 364){
+        xl4 = spawn[sx4];
+      }
     }
 
     if (yl5 > 484) {
@@ -496,7 +505,9 @@ function drawLaser() {
         }
         t5=false;
       }
-      xl5 = spawn[sx5];
+      if(x !== 228 && xl5 !== 364){
+        xl5 = spawn[sx5];
+      }
     }
 
     if (yl6 > 484) {
@@ -508,7 +519,9 @@ function drawLaser() {
         }
         t6=false;
       }
-      xl6 = spawn[sx6];
+      if(x !== 228 && xl6 !== 364){
+        xl6 = spawn[sx6];
+      }
     }
     requestAnimationFrame(draw);
   }
@@ -544,6 +557,8 @@ function endMenu(){
     confirmButtonText: 'DONE',
     customClass: {
       confirmButton: 'confirm',
+      title: 'swtitle',
+      popup: 'swtext',
     },
   }).then(function(isConfirm) {
     if (isConfirm) {
@@ -558,16 +573,17 @@ function endMenu(){
   function loseMenu(){
     sound.volume=0.05;
     Swal.fire({
-      title: 'GOOD GAME',
-      color: "#ec0d5b",
+      title: 'YOU LOSE',
       focusConfirm: false,
       returnFocus: false,
       background: "rgba(0, 0, 0, 0.70)",
-      confirmButtonColor: "#0078D3",
-      html: "You have been hit!",
+      confirmButtonColor: "#0091ff",
+      html: "You have been hit by a laser!",
       confirmButtonText: 'DONE',
       customClass: {
         confirmButton: 'confirm',
+        title: 'swtitle',
+        popup: 'swtext',
       },
     }).then(function(isConfirm) {
       if (isConfirm) {
