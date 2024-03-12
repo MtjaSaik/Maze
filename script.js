@@ -177,11 +177,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
   drawCh();
 });
 
-
+var start = false;
 me = true;
 var progressiveDifficulty = false;
 function moveCh(){
   me = false;
+  start = true;
   removeSolution();
   ctx2.clearRect(0, 0, canvas.width, canvas.height);
   character.style.display = "block";
@@ -281,6 +282,11 @@ document.addEventListener("keydown", (e) => {
       }
       break;
 
+
+    case "r":
+    case "R":
+      location.reload();
+      break;
   }
 
 });
@@ -469,10 +475,7 @@ function drawLaser(){
       yl5 += pyl5;
       yl6 += pyl6;
 
-      /*pxl += 0.001;
-      pxl2 += 0.001;
-      pxl3 += 0.001;*/
-      console.log(pxl);
+      //console.log(pxl);
     }
    }
 
@@ -572,6 +575,39 @@ function drawLaser(){
   //loseMenu();
 }
 var hit = false;
+
+if(start = true){
+function incrementVariable() {
+  pxl += Math.random() * (0.80 - 0.15) + 0.10;
+  pxl2 += Math.random() * (0.80 - 0.15) + 0.10;
+  pxl3 += Math.random() * (0.80 - 0.15) + 0.10;
+
+  pyl4 += Math.random() * (0.80 - 0.15) + 0.10;
+  pyl5 += Math.random() * (0.80 - 0.15) + 0.10;
+  pyl6 += Math.random() * (0.80 - 0.15) + 0.10;
+
+  if(pxl >= 5.5){
+    pxl = 5.5;
+  }
+  if(pxl2 >= 5.5){
+    pxl2 = 5.5;
+  }
+  if(pxl3 >= 5.5){
+    pxl3 = 5.5;
+  }
+  if(pyl4 >= 5.5){
+    pyl4 = 5.5;
+  }
+  if(pyl5 >= 5.5){
+    pyl5 = 5.5;
+  }
+  if(pyl6 >= 5.5){
+    pyl6 = 5.5;
+  }
+}
+
+}
+const intervalId = setInterval(incrementVariable, 5000);
 
 function endMenu(){
   sound.volume=0.05;
