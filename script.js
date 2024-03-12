@@ -179,7 +179,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 
 me = true;
-function moveCh() {
+var progressiveDifficulty = false;
+function moveCh(){
   me = false;
   removeSolution();
   ctx2.clearRect(0, 0, canvas.width, canvas.height);
@@ -189,6 +190,13 @@ function moveCh() {
   x = 228;
   m = 16;
   ctx2.drawImage(img, x, y, chW, chH);
+  if(document.getElementById('easy').checked == true){
+    console.log("easy");
+    progressiveDifficulty = false;
+  }else{
+    console.log("hard");
+    progressiveDifficulty = true;
+  }
   if(hit == false){
     drawLaser();
   }
@@ -307,8 +315,13 @@ for (var i = 0; i < w * 2 + 1; i++) {
 }
 //console.log(arr);
 
-
-function drawLaser() {
+  var pxl = 0.75;
+  var pxl2 = 1.0;
+  var pxl3 = 1.2;
+  var pyl4 = 0.3;
+  var pyl5 = 0.45;
+  var pyl6 = 1.5; 
+function drawLaser(){
   var t=true;
   var t2=true;
   var t3=true;
@@ -381,7 +394,6 @@ function drawLaser() {
         xl6 = spawn[sx6];
       }
 
-
   function draw(){
     ctx3.clearRect(0, 0, 484, 484);
     if(hit == false){
@@ -435,16 +447,34 @@ function drawLaser() {
     ctx3.stroke();
     ctx3.closePath();
 
-    // Move the laser
-    if(hit == false){
-    xl += 0.75;
-    xl2 += 1;
-    xl3 += 1.2;
 
-    yl4 += 0.3;
-    yl5 += 0.45;
-    yl6 += 1.5;
+    // Move the laser
+    if(progressiveDifficulty == false){
+      if(hit == false){
+        xl += 0.75;
+        xl2 += 1;
+        xl3 += 1.2;
+
+        yl4 += 0.3;
+        yl5 += 0.45;
+        yl6 += 1.5;
+      }
+   }else{
+    if(hit == false){
+      xl += pxl;
+      xl2 += pxl2;
+      xl3 += pxl3;
+
+      yl4 += pyl4;
+      yl5 += pyl5;
+      yl6 += pyl6;
+
+      /*pxl += 0.001;
+      pxl2 += 0.001;
+      pxl3 += 0.001;*/
+      console.log(pxl);
     }
+   }
 
     if (xl > 484) {
       xl = -50;
@@ -541,7 +571,6 @@ function drawLaser() {
   //endMenu();
   //loseMenu();
 }
-
 var hit = false;
 
 function endMenu(){

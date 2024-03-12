@@ -34,7 +34,7 @@ body{
     font-family: Magistral;
     font-size: 100px;
     font-weight: bold;
-    background: linear-gradient(to right, #1e9bff, #4ad81b, #ec0d5b);
+    background: linear-gradient(to right, #008cff, #40ff00, #f60459);
     background-clip: unset;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -52,6 +52,7 @@ body{
 	margin: auto;
 	display: flex;
 	justify-content: space-around;
+    border-radius: 15px;
 }
 
 button {
@@ -78,9 +79,11 @@ button {
     color: #fff;
     border: 2px solid rgba(0, 0, 0, 0);
     box-shadow: 0 0 0px var(--color);
+    border-radius: 5px;
   }
   
   button::before {
+    border-radius: 5px;
     content: '';
     position: absolute;
     top: 0;
@@ -94,6 +97,7 @@ button {
   }
   
   button:hover::before {
+    border-radius: 5px;
     transform: scale(1);
     transition-delay: 0.3s;
     box-shadow: 0 0 10px var(--color),
@@ -150,6 +154,10 @@ button {
     text-shadow: 0 0 15px #ff3179c9;
     font-size: 52.2px;
     font-family: 'Courier New', Courier, monospace;
+}
+
+label{
+    color: #40ff00;
 }
 
 @font-face{
