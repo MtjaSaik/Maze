@@ -159,35 +159,30 @@ button {
 
 .diff + label{
     background:url(pictures/switchOff.png) no-repeat;
-    height: 129px;
-    width: 100px;
+    height: 109px;
+    width: 80px;
     display:inline-block;
-    padding: 0 0 0 0px;
 }
 
 .diff:checked + label{
     background:url(pictures/switchOn.png) no-repeat;
-    height: 129px;
-    width: 100px;
+    height: 109px;
+    width: 80px;
     display:inline-block;
-    padding: 0 0 0 0px;
 }
 
 .checker{
-    margin: 50 0 0 620;
-    top: 0;
-    position: absolute;
+    margin: 280px 0px 0px -10px;
+    rotate: 90deg;
 }
 
 .checkerHard{
-    margin: 20 0 0 643;
-    top: 0;
+    margin: 55 0 0 360;
     position: absolute;
 }
 
 .checkerEasy{
-    margin: 178 0 0 643;
-    top: 0;
+    margin: 55 0 0 180;
     position: absolute;
 }
 
@@ -201,8 +196,8 @@ button {
 }
 
 .hard{
-    color: #008cff;
-    text-shadow: 0 0 15px #008cffa4;
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
     font-size: 24px;
     font-family: monospace;
     font-weight: 1000;
@@ -211,8 +206,8 @@ button {
 }
 
 .easy{
-    color: #008cff;
-    text-shadow: 0 0 15px #008cffa4;
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
     font-size: 24px;
     font-family: monospace;
     font-weight: 1000;

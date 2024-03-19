@@ -72,6 +72,8 @@ var spawn = [
   [26],[42],[58],[74],[90],[106],[122],[138],[154],[170],[186],[202],[218],[234],[250],[266],[282],[298],[314],[330],[346],[362],[378],[394],[410],[426],[442],[458],[474]
 ];
 
+document.getElementById("hard").style.opacity = "0.65";
+
 sound = new Audio('music/hero.mp3');
 sound.volume=0.025;
 document.addEventListener("click", (event) => {
@@ -116,9 +118,10 @@ function drawSolution() {
   const drawLinesWithDelay = (ctx, path, delay, style) => {
 
     ctx.beginPath();
-    ctx.strokeStyle = "#ff01eb";
+    ctx.strokeStyle = "rgba(255, 1, 235)";
 
     ctx.lineWidth = 4;
+    ctx.globalAlpha = 0.45;
 
     const drawLineSegment = (i) => {
       const point = path[i];
@@ -130,9 +133,7 @@ function drawSolution() {
       } else {
         ctx.lineTo(x, y);
       }
-
       ctx.stroke();
-
       if (i < path.length - 1) {
         setTimeout(() => {
           drawLineSegment(i + 1);
@@ -141,7 +142,7 @@ function drawSolution() {
         ctx.closePath();
         document.getElementById("sol").removeAttribute("disabled");
         document.getElementById("play").removeAttribute("disabled");
-        document.getElementById("toggle").setAttribute("disabled");
+        document.getElementById("toggle").removeAttribute("disabled");
       }
     };
 
@@ -177,6 +178,16 @@ function drawCh() {
 document.addEventListener("DOMContentLoaded", (event) => {
   drawCh();
 });
+
+function capacity(){
+  if(document.getElementById('toggle').checked == false){
+    document.getElementById("hard").style.opacity = "0.65";
+    document.getElementById("easy").style.opacity = "1";
+  }else{
+    document.getElementById("easy").style.opacity = "0.65";
+    document.getElementById("hard").style.opacity = "1";
+  }
+}
 
 var start = false;
 me = true;
@@ -328,7 +339,15 @@ for (var i = 0; i < w * 2 + 1; i++) {
   var pxl3 = 1.2;
   var pyl4 = 0.3;
   var pyl5 = 0.45;
-  var pyl6 = 1.5; 
+  var pyl6 = 1.5;
+
+  var rand1 = 1;
+  var rand2 = 1;
+  var rand3 = 1;
+  var rand4 = 1;
+  var rand5 = 1;
+  var rand6 = 1;
+
 function drawLaser(){
   var t=true;
   var t2=true;
@@ -407,53 +426,110 @@ function drawLaser(){
     if(hit == false){
     detectHit();
     }
-    ctx3.beginPath();
-    ctx3.moveTo(xl, yl);
-    ctx3.lineTo(xl + laserWidth, yl);
-    ctx3.strokeStyle = 'red';
-    ctx3.lineWidth = 6;
-    ctx3.stroke();
-    ctx3.closePath();
 
-    ctx3.beginPath();
-    ctx3.moveTo(xl2, yl2);
-    ctx3.lineTo(xl2 + laserWidth, yl2);
-    ctx3.strokeStyle = 'red';
-    ctx3.lineWidth = 6;
-    ctx3.stroke();
-    ctx3.closePath();
+    if(progressiveDifficulty == false){
+      ctx3.beginPath();
+      ctx3.moveTo(xl, yl);
+      ctx3.lineTo(xl + laserWidth, yl);
+      ctx3.strokeStyle = 'red';
+      ctx3.lineWidth = 6;
+      ctx3.stroke();
+      ctx3.closePath();
 
-    ctx3.beginPath();
-    ctx3.moveTo(xl3, yl3);
-    ctx3.lineTo(xl3 + laserWidth, yl3);
-    ctx3.strokeStyle = 'red';
-    ctx3.lineWidth = 6;
-    ctx3.stroke();
-    ctx3.closePath();
+      ctx3.beginPath();
+      ctx3.moveTo(xl2, yl2);
+      ctx3.lineTo(xl2 + laserWidth, yl2);
+      ctx3.strokeStyle = 'red';
+      ctx3.lineWidth = 6;
+      ctx3.stroke();
+      ctx3.closePath();
 
-    ctx3.beginPath();
-    ctx3.moveTo(xl4, yl4);
-    ctx3.lineTo(xl4, yl4 + laserWidth);
-    ctx3.strokeStyle = 'red';
-    ctx3.lineWidth = 6;
-    ctx3.stroke();
-    ctx3.closePath();
+      ctx3.beginPath();
+      ctx3.moveTo(xl3, yl3);
+      ctx3.lineTo(xl3 + laserWidth, yl3);
+      ctx3.strokeStyle = 'red';
+      ctx3.lineWidth = 6;
+      ctx3.stroke();
+      ctx3.closePath();
 
-    ctx3.beginPath();
-    ctx3.moveTo(xl5, yl5);
-    ctx3.lineTo(xl5, yl5 + laserWidth);
-    ctx3.strokeStyle = 'red';
-    ctx3.lineWidth = 6;
-    ctx3.stroke();
-    ctx3.closePath();
+      ctx3.beginPath();
+      ctx3.moveTo(xl4, yl4);
+      ctx3.lineTo(xl4, yl4 + laserWidth);
+      ctx3.strokeStyle = 'red';
+      ctx3.lineWidth = 6;
+      ctx3.stroke();
+      ctx3.closePath();
 
-    ctx3.beginPath();
-    ctx3.moveTo(xl6, yl6);
-    ctx3.lineTo(xl6, yl6 + laserWidth);
-    ctx3.strokeStyle = 'red';
-    ctx3.lineWidth = 6;
-    ctx3.stroke();
-    ctx3.closePath();
+      ctx3.beginPath();
+      ctx3.moveTo(xl5, yl5);
+      ctx3.lineTo(xl5, yl5 + laserWidth);
+      ctx3.strokeStyle = 'red';
+      ctx3.lineWidth = 6;
+      ctx3.stroke();
+      ctx3.closePath();
+
+      ctx3.beginPath();
+      ctx3.moveTo(xl6, yl6);
+      ctx3.lineTo(xl6, yl6 + laserWidth);
+      ctx3.strokeStyle = 'red';
+      ctx3.lineWidth = 6;
+      ctx3.stroke();
+      ctx3.closePath();
+    }else{
+      ctx3.beginPath();
+      ctx3.globalAlpha = rand1;
+      ctx3.moveTo(xl, yl);
+      ctx3.lineTo(xl + laserWidth, yl);
+      ctx3.strokeStyle = 'red ';
+      ctx3.lineWidth = 6;
+      ctx3.stroke();
+      ctx3.closePath();
+
+      ctx3.beginPath();
+      ctx3.globalAlpha = rand2;
+      ctx3.moveTo(xl2, yl2);
+      ctx3.lineTo(xl2 + laserWidth, yl2);
+      ctx3.strokeStyle = 'red';
+      ctx3.lineWidth = 6;
+      ctx3.stroke();
+      ctx3.closePath();
+
+      ctx3.beginPath();
+      ctx3.globalAlpha = rand3;
+      ctx3.moveTo(xl3, yl3);
+      ctx3.lineTo(xl3 + laserWidth, yl3);
+      ctx3.strokeStyle = 'red';
+      ctx3.lineWidth = 6;
+      ctx3.stroke();
+      ctx3.closePath();
+
+      ctx3.beginPath();
+      ctx3.globalAlpha = rand4;
+      ctx3.moveTo(xl4, yl4);
+      ctx3.lineTo(xl4, yl4 + laserWidth);
+      ctx3.strokeStyle = 'red';
+      ctx3.lineWidth = 6;
+      ctx3.stroke();
+      ctx3.closePath();
+
+      ctx3.beginPath();
+      ctx3.globalAlpha = rand5;
+      ctx3.moveTo(xl5, yl5);
+      ctx3.lineTo(xl5, yl5 + laserWidth);
+      ctx3.strokeStyle = 'red';
+      ctx3.lineWidth = 6;
+      ctx3.stroke();
+      ctx3.closePath();
+
+      ctx3.beginPath();
+      ctx3.globalAlpha = rand6;
+      ctx3.moveTo(xl6, yl6);
+      ctx3.lineTo(xl6, yl6 + laserWidth);
+      ctx3.strokeStyle = 'red';
+      ctx3.lineWidth = 6;
+      ctx3.stroke();
+      ctx3.closePath();
+    }
 
 
     // Move the laser
@@ -484,6 +560,7 @@ function drawLaser(){
     if (xl > 484) {
       xl = -50;
       sy = Math.round(Math.random()*(28-0)+0);
+      rand1 = Math.random()*(1+0.3)-0.3;
       while(t){
         if(sy == sy2|| sy == sy3){
           sy = Math.round(Math.random()*(28-0)+0);
@@ -495,6 +572,7 @@ function drawLaser(){
 
     if (xl2 > 484) {
       xl2 = -50;
+      rand2 = Math.random()*(1+0.3)-0.3;
       sy2 = Math.round(Math.random()*(28-0)+0);
       while(t2){
         if(sy2 == sy|| sy2 == sy3){
@@ -507,6 +585,7 @@ function drawLaser(){
 
     if (xl3 > 484) {
       xl3 = -50;
+      rand3 = Math.random()*(1+0.3)-0.3;
       sy3 = Math.round(Math.random()*(28-0)+0);
       while(t3){
         if(sy3 == sy2 || sy3 == sy){
@@ -519,6 +598,7 @@ function drawLaser(){
 
     if (yl4 > 484) {
       yl4 = -50;
+      rand4 = Math.random()*(1+0.3)-0.3;
       sx4 = Math.round(Math.random()*(28-0)+0);
       while(t4){
         if(sx4 == sx5 || sx4 == sx6 || sx4 == 13){
@@ -533,6 +613,7 @@ function drawLaser(){
 
     if (yl5 > 484) {
       yl5 = -50;
+      rand5 = Math.random()*(1+0.3)-0.3;
       sx5 = Math.round(Math.random()*(28-0)+0);
       while(t5){
         if(sx5 == sx4 || sx5 == sx6 || sx5 == 13){
@@ -547,6 +628,7 @@ function drawLaser(){
 
     if (yl6 > 484) {
       yl6 = -50;
+      rand6 = Math.random()*(1+0.3)-0.3;
       sx6 = Math.round(Math.random()*(28-0)+0);
       while(t6){
         if(sx6 == sx4 || sx6 == sx5 || sx6 == 13){
@@ -630,8 +712,6 @@ function endMenu(){
   }).then(function(isConfirm) {
     if (isConfirm) {
       location.reload();
-    } else {
-      //if no clicked => do something else
     }
   });
   hit = true;
@@ -655,8 +735,6 @@ function endMenu(){
     }).then(function(isConfirm) {
       if (isConfirm) {
         location.reload();
-      } else {
-        //if no clicked => do something else
       }
     });
   }
