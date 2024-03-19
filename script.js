@@ -109,6 +109,7 @@ function drawSolution() {
   removeSolution();
   document.getElementById("play").setAttribute("disabled", true);
   document.getElementById("sol").setAttribute("disabled", true);
+  document.getElementById("toggle").setAttribute("disabled", true);
   character.style.display = "none";
   laser.style.display = "none";
 
@@ -140,7 +141,7 @@ function drawSolution() {
         ctx.closePath();
         document.getElementById("sol").removeAttribute("disabled");
         document.getElementById("play").removeAttribute("disabled");
-
+        document.getElementById("toggle").setAttribute("disabled");
       }
     };
 
@@ -191,6 +192,7 @@ function moveCh(){
   x = 228;
   m = 16;
   ctx2.drawImage(img, x, y, chW, chH);
+  document.getElementById("toggle").setAttribute("disabled", true);
   if(document.getElementById('toggle').checked == false){
     console.log("easy");
     progressiveDifficulty = false;
