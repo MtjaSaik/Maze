@@ -191,7 +191,7 @@ function moveCh(){
   x = 228;
   m = 16;
   ctx2.drawImage(img, x, y, chW, chH);
-  if(document.getElementById('easy').checked == true){
+  if(document.getElementById('toggle').checked == false){
     console.log("easy");
     progressiveDifficulty = false;
   }else{

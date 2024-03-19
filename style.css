@@ -23,7 +23,7 @@ body{
 }
 
 .title{
-    height: 130px;
+    height: 120px;
     letter-spacing: 5px;
     width: inherit;
     position: static;
@@ -107,10 +107,11 @@ button {
 
 
 .container{
-    margin-top: 50px;
+    margin-top: 20px;
     position: fixed;
     height: 600px;
-    width: inherit;
+    width: 600px;
+    margin-left: 200px;
 }
 
 .ho{
@@ -132,10 +133,6 @@ button {
     top: 0;
 }
 
-.rules{
-    font-size: 10px !important;
-}
-
 .confirm{
     width: 180px;
     height: 50px;
@@ -144,7 +141,7 @@ button {
 
 .swtext{
     color: #ff3179c9;
-    font-size: 17.9px;
+    font-size: 18.1px;
     transition: 0.5s;
     text-shadow: 1px 1px #ff16686e;
 }
@@ -156,8 +153,68 @@ button {
     font-family: 'Courier New', Courier, monospace;
 }
 
-label{
+
+.diff{
+    display:none;
+}
+
+.diff + label{
+    background:url(pictures/switchOff.png) no-repeat;
+    height: 129px;
+    width: 100px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+.diff:checked + label{
+    background:url(pictures/switchOn.png) no-repeat;
+    height: 129px;
+    width: 100px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+.checker{
+    margin: 50 0 0 620;
+    top: 0;
+    position: absolute;
+}
+
+.checkerHard{
+    margin: 20 0 0 643;
+    top: 0;
+    position: absolute;
+}
+
+.checkerEasy{
+    margin: 178 0 0 643;
+    top: 0;
+    position: absolute;
+}
+
+.textDiff{
     color: #40ff00;
+    font-size: 28px;
+    font-family: monospace;
+    font-weight: 1000;
+    text-align: center;
+    position: relative;
+}
+
+.hard{
+    color: #008cff;
+    font-size: 24px;
+    font-family: monospace;
+    font-weight: 1000;
+    text-align: center;
+}
+
+.easy{
+    color: #008cff;
+    font-size: 24px;
+    font-family: monospace;
+    font-weight: 1000;
+    text-align: center;
 }
 
 @font-face{
